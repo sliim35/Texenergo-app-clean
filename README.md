@@ -1,4 +1,4 @@
-# Texenergo-app-clean
+# Texenergo App
 
 ## Dependencies
 * [Node.js](https://nodejs.org/)
