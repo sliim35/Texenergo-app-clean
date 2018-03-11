@@ -88,6 +88,12 @@ gulp.task('image', function () {
         .pipe(gulp.dest('dist/img'))
 });
 
+// LOGO
+gulp.task('logo', function () {
+  gulp.src('app/logo/logo.svg')
+    .pipe(gulp.dest('dist/logo'))
+});
+
 // WATCH
 gulp.task('watch', ['serve', 'html', 'ajax', 'scss'], function () {
   gulp.watch('app/scss/**/*.scss', ['scss'])
