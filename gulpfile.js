@@ -63,8 +63,11 @@ gulp.task('html:other', function () {
 
 // AJAX pages build
 gulp.task('ajax', function () {
-    return gulp.src('app/ajax/*.html')
-      .pipe(gulp.dest('dist/ajax'));
+  return gulp.src('app/ajax/*.html')
+    .pipe(gulp.dest('dist/ajax'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 // Image build
@@ -80,10 +83,10 @@ gulp.task('image', function () {
 });
 
 // WATCH
-gulp.task('watch', ['serve', 'html', 'scss'], function () {
+gulp.task('watch', ['serve', 'html', 'ajax', 'scss'], function () {
   gulp.watch('app/scss/**/*.scss', ['scss'])
   gulp.watch('app/index.html', ['html'])
-  gulp.watch('app/img/**/*', ['scss']);
+  gulp.watch('app/ajax/**/*.html', ['ajax']);
 })
 
 // Run browser sync
@@ -98,5 +101,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['js', 'html:other', 'ajax', 'css', 'font', 'image', 'sound', 'watch']);
-gulp.task('develop', ['js', 'html:other', 'ajax', 'watch']);
+gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'watch']);
+gulp.task('develop', ['js', 'html:other']);
