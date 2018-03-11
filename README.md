@@ -4,12 +4,17 @@
 * [Node.js](https://nodejs.org/)
 * [gulpjs](https://github.com/gulpjs/gulp/tree/v3.9.1/docs)
 
-## Install
+### Install
 ```
-* $ npm install
+$ npm install
 ```
 
-## Launch
+### Launch for code
 ```
-* $ gulp default
+$ gulp default
+```
+
+### Launch for test
+```
+$ gulp default
 ```

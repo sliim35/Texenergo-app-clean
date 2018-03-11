@@ -102,4 +102,4 @@ gulp.task('serve', function() {
 });
 
 gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'watch']);
-gulp.task('develop', ['js', 'html:other']);
+gulp.task('test', ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound']);
