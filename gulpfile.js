@@ -52,7 +52,13 @@ gulp.task('font', function () {
 // Sound build
 gulp.task('sound', function () {
     return gulp.src('app/sound/**/*.*')
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest('dist/sound'));
+});
+
+// Favicon build
+gulp.task('favicon', function () {
+    return gulp.src('app/favicon/**/*.*')
+      .pipe(gulp.dest('dist/favicon'));
 });
 
 // Other HTML pages build
@@ -101,5 +107,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'watch']);
+gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'favicon', 'watch']);
 gulp.task('develop', ['js', 'html:other']);
