@@ -55,12 +55,6 @@ gulp.task('sound', function () {
       .pipe(gulp.dest('dist/sound'));
 });
 
-// Favicon build
-gulp.task('favicon', function () {
-    return gulp.src('app/favicon/**/*.*')
-      .pipe(gulp.dest('dist/favicon'));
-});
-
 // Other HTML pages build
 gulp.task('html:other', function () {
     return gulp.src(['!app/index.html', 'app/*.html'])
@@ -88,12 +82,6 @@ gulp.task('image', function () {
         .pipe(gulp.dest('dist/img'))
 });
 
-// LOGO
-gulp.task('logo', function () {
-  gulp.src('app/logo/logo.svg')
-    .pipe(gulp.dest('dist/logo'))
-});
-
 // WATCH
 gulp.task('watch', ['serve', 'html', 'ajax', 'scss'], function () {
   gulp.watch('app/scss/**/*.scss', ['scss'])
@@ -113,5 +101,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'favicon', 'watch']);
+gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'watch']);
 gulp.task('develop', ['js', 'html:other']);
