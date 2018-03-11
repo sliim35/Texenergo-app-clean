@@ -33,14 +33,26 @@ gulp.task('scss', function () {
 
 // CSS build
 gulp.task('css', function () {
-    return gulp.src('app/css')
+    return gulp.src('app/css/*.css')
       .pipe(gulp.dest('dist/css'));
 });
 
 // JS build
 gulp.task('js', function () {
-    return gulp.src('app/js')
+    return gulp.src('app/js/**/*.js')
       .pipe(gulp.dest('dist/js'));
+});
+
+// Font build
+gulp.task('font', function () {
+    return gulp.src('app/fonts')
+      .pipe(gulp.dest('dist'));
+});
+
+// Sound build
+gulp.task('sound', function () {
+    return gulp.src('app/sound/**/*.*')
+      .pipe(gulp.dest('dist'));
 });
 
 // Other HTML pages build
@@ -86,5 +98,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['js', 'html:other', 'ajax', 'css', 'image', 'watch']);
+gulp.task('default', ['js', 'html:other', 'ajax', 'css', 'font', 'image', 'sound', 'watch']);
 gulp.task('develop', ['js', 'html:other', 'ajax', 'watch']);
