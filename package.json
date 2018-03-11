@@ -1,5 +1,5 @@
 {
-  "name": "TexenergoApp",
+  "name": "Texenergo-app-clean",
   "version": "1.0.0",
   "description": "Make life better",
   "main": "gulpfile.js",
@@ -16,16 +16,16 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "develop": "gulp develop"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sliim35/TexenergoApp.git"
+    "url": "git+https://github.com/sliim35/Texenergo-app-clean.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sliim35/TexenergoApp/issues"
+    "url": "https://github.com/sliim35/Texenergo-app-clean/issues"
   },
-  "homepage": "https://github.com/sliim35/TexenergoApp#readme"
+  "homepage": "https://github.com/sliim35/Texenergo-app-clean#readme"
 }

@@ -31,18 +31,16 @@ gulp.task('scss', function () {
     }));
 })
 
-// PLUGINS build
-gulp.task('js:plugins', function () {
-  return gulp.src('app/js/plugin/**/*.js')
-    .pipe(concat('plugins.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
-});
-
 // JS build
 gulp.task('js', function () {
-    return gulp.src(['app/js/**/*.js', '!app/js/plugin/**/*.js'])
+    return gulp.src('app/js')
       .pipe(gulp.dest('dist/js'));
+});
+
+// Other HTML pages build
+gulp.task('html:other', function () {
+    return gulp.src(['!app/index.html', 'app/*.html'])
+      .pipe(gulp.dest('dist'));
 });
 
 // AJAX pages build
@@ -82,4 +80,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['js:plugins', 'js', 'ajax', 'image', 'watch']);
+gulp.task('default', ['js', 'html:other', 'ajax', 'image', 'watch']);
+gulp.task('develop', ['js', 'html:other', 'ajax', 'watch']);
