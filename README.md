@@ -16,5 +16,5 @@ $ gulp default
 
 ### Launch for test
 ```
-$ gulp default
+$ gulp test
 ```
