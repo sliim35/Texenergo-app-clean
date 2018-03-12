@@ -45,8 +45,8 @@ gulp.task('js', function () {
 
 // Font build
 gulp.task('font', function () {
-    return gulp.src('app/fonts')
-      .pipe(gulp.dest('dist'));
+    return gulp.src('app/fonts/**/*.*')
+      .pipe(gulp.dest('dist/fonts'));
 });
 
 // Sound build
@@ -87,6 +87,7 @@ gulp.task('watch', ['serve', 'html', 'ajax', 'scss'], function () {
   gulp.watch('app/scss/**/*.scss', ['scss'])
   gulp.watch('app/index.html', ['html'])
   gulp.watch('app/ajax/**/*.html', ['ajax']);
+  gulp.watch('app/js/**/*.js', ['js']);
 })
 
 // Run browser sync
@@ -101,5 +102,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['js', 'html:other', 'css', 'font', 'image', 'sound', 'watch']);
-gulp.task('test', ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound']);
+gulp.task('default', ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound', 'watch']);
+gulp.task('test',    ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound']);
