@@ -106,4 +106,4 @@ gulp.task('serve', function() {
 });
 
 gulp.task('default', ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound', 'watch']);
-gulp.task('test',    ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound']);
+gulp.task('test', ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound']);
