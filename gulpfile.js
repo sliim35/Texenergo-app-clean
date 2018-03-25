@@ -39,11 +39,12 @@ gulp.task('clean:css', function () {
         .pipe(postcss(
           [require('postcss-uncss')
             ({
-	            html: ['dist/index.html', 'dist/ajax/*.html']
+	            html: ['dist/index.html', 'dist/ajax/*.html'],
+              ignore: ['#ribbon', '.breadcrumb']
             })]
         ))
         .pipe(rename('main.clean.css'))
-//        .pipe(cleanCSS())
+        .pipe(cleanCSS())
         .pipe(gulp.dest('dist'));
 });
 
