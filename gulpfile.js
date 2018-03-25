@@ -27,6 +27,7 @@ gulp.task('html', function () {
 gulp.task('scss', function () {
   return gulp.src('app/scss/main.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCSS())
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.reload({
       stream: true
