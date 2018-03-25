@@ -9,6 +9,9 @@ var gulp        = require('gulp'),
     cache       = require('gulp-cache'),
     uglify      = require('gulp-uglify'),
     concat      = require('gulp-concat'),
+    postcss     = require('gulp-postcss'),
+    uncss       = require('postcss-uncss'),
+    rename      = require('gulp-rename'),
     pngquant    = require('imagemin-pngquant');
 
 // HTML build
@@ -24,12 +27,25 @@ gulp.task('html', function () {
 gulp.task('scss', function () {
   return gulp.src('app/scss/main.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS())
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.reload({
       stream: true
     }));
 })
+
+// UNCSS build
+gulp.task('clean:css', function () {
+    return gulp.src('dist/main.css')
+        .pipe(postcss(
+          [require('postcss-uncss')
+            ({
+	            html: ['dist/index.html', 'dist/ajax/*.html']
+            })]
+        ))
+        .pipe(rename('main.clean.css'))
+//        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist'));
+});
 
 // CSS build
 gulp.task('css', function () {
@@ -87,8 +103,8 @@ gulp.task('image', function () {
 
 // WATCH
 gulp.task('watch', ['serve', 'html', 'ajax', 'scss'], function () {
-  gulp.watch('app/scss/**/*.scss', ['scss'])
-  gulp.watch('app/index.html', ['html'])
+  gulp.watch('app/scss/**/*.scss', ['scss']);
+  gulp.watch('app/index.html', ['html']);
   gulp.watch('app/ajax/**/*.html', ['ajax']);
   gulp.watch('app/js/**/*.js', ['js']);
 })
@@ -105,5 +121,5 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('default', ['html', 'html:other', 'ajax', 'scss', 'css', 'js', 'font', 'image', 'sound', 'watch']);
+gulp.task('default', ['html', 'html:other', 'ajax', 'scss', 'clean:css', 'css', 'js', 'font', 'image', 'sound', 'watch']);
 gulp.task('test', ['']);
